@@ -1,0 +1,42 @@
+4 IP ADDRESS, ROUTING & WEBREQUESTS
+
+1. 
+
+IP Address: 145.118.108.92
+Default Gateway: 145.118.108.1
+
+2. 
+
+I turned on NordVPN, on ifconfig.me, the IP Address changed to: '193.142.201.132'. However, on cmd ipconfig command, it still says the original address '145.118.108.92'. This is possibly due to the fact that ipconfig shows the local/private network adapter’s IP assigned by my ISP or router, while ifconfig.me shows the public IP address that websites detect after being routed through the VPN server.
+
+3. 
+
+My IP address (145.118.108.92) is a public IP address, since it does not fall within the private ranges (10.x.x.x, 172.16–31.x.x, or 192.168.x.x). The default gateway (145.118.108.1) is also a public IP address, because it is outside the private ranges as well. This indicates that the ISP (or network provider) is assigning public IP addresses directly to the network, rather than using a private internal gateway. This makes sense because I am connected to the University's eduroam Wi-Fi, which typically uses public IPs managed by the university’s network infrastructure.
+
+4.
+
+curl ipinfo.io
+{
+  "ip": "145.118.108.92",
+  "city": "The Hague",
+  "region": "South Holland",
+  "country": "NL",
+  "loc": "52.0767,4.2986",
+  "org": "AS1103 SURF B.V.",
+  "postal": "2512",
+  "timezone": "Europe/Amsterdam",
+
+
+5. 
+
+When tracing the route to Google, the first hub is always the local gateway/router "145.118.108.1" (Leiden University’s Eduroam router), and the last hub is the Google server "ams15s48-in-f14.1e100.net [142.251.39.110]" (in this case in Amsterdam). This shows the data path begins locally and ends at the nearest Google data center edge node.
+
+
+
+6. 
+
+Answer for google.com:
+
+IPv6: 2a00:1450:400e:811::200e
+
+IPv4: 142.251.39.110
